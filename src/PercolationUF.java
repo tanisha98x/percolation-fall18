@@ -27,25 +27,32 @@ public class PercolationUF implements IPercolate {
 					String.format("(%d,%d) not in bounds", row,col));
 		}
 		
-		if (myGrid[row][col]= true) {
+		if (myGrid[row][col]==true) {
 			return;
 		}
 		
-		if (!isOpen(row,col)) {
-			myGrid[row][col]= true;
-			if (isOpen(row+1,col)) {
-				myFinder.connected((row+1)*sizee+col, row*sizee+col);
-			}
-			if (isOpen(row,col+1)) {
-				myFinder.connected((row)*sizee+col+1, row*sizee+col);
-			}
-			if (isOpen(row-1,col)) {
-				myFinder.connected((row-1)*sizee+col, row*sizee+col);
-			}
-			if (isOpen(row,col-1)) {
-				myFinder.connected((row)*sizee+col-1, row*sizee+col);
-			}
+		if(row==0) {
+			myFinder.union((row)*sizee+col, VTOP);
 		}
+		if(row==myGrid.length-1) {
+			myFinder.union((row)*sizee+col, VBOTTOM);
+		}
+		
+		
+			myGrid[row][col]= true;
+			if (inBounds(row+1,col) && isOpen(row+1,col)) {
+				myFinder.union((row+1)*sizee+col, row*sizee+col);
+			}
+			if (inBounds(row,col+1) && isOpen(row,col+1)) {
+				myFinder.union((row)*sizee+col+1, row*sizee+col);
+			}
+			if (inBounds(row-1,col) && isOpen(row-1,col)) {
+				myFinder.union((row-1)*sizee+col, row*sizee+col);
+			}
+			if (inBounds(row,col-1) && isOpen(row,col-1)) {
+				myFinder.union((row)*sizee+col-1, row*sizee+col);
+			}
+		
 		
 	}
 

@@ -15,8 +15,7 @@ public class PercolationUF implements IPercolate {
 		VTOP=size*size;
 		VBOTTOM=size*size+1;
 		sizee=size;
-		for (boolean [] each :myGrid) {
-			Arrays.fill(each, false);}
+		
 		
 	}
 	
@@ -30,9 +29,10 @@ public class PercolationUF implements IPercolate {
 		if (myGrid[row][col]==true) {
 			return;
 		}
-		
+		myCount+=1;
 		if(row==0) {
 			myFinder.union((row)*sizee+col, VTOP);
+			
 		}
 		if(row==myGrid.length-1) {
 			myFinder.union((row)*sizee+col, VBOTTOM);

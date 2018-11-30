@@ -1,11 +1,17 @@
 import java.util.*;
 public class PercolationBFS extends PercolationDFSFast{
 
+	 /**
+     * constructor with an int/size parameter that calls super to initialize the state in the parent class. 
+     */
 	public PercolationBFS(int n) {
 		super(n);
-		// TODO Auto-generated constructor stub
 	}
 	
+	 /**
+     * Overrides original dfs method, new dfs methods creates a queue and searches BFS
+     * @param int row and int column
+     */
 	@Override
 	public void dfs(int row, int col) {
 		Queue<Integer> qp = new LinkedList<>();

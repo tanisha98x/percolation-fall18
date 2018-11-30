@@ -1,11 +1,16 @@
 
 public class PercolationDFSFast extends PercolationDFS {
-
+	/**
+	 * Constructor with an int/size parameter that calls super to initialize the state in the parent class
+	 */
 	public PercolationDFSFast(int n) {
 		super(n);
-		// TODO Auto-generated constructor stub
 	}
 	
+	 /**
+     * Determine if the newly open cell (parameters row and col of updateOnOpen) should be marked as full, if the cell should be marked as full, call dfs(row,col)
+     * @param  int row and int col
+     */
 	@Override
 	protected void updateOnOpen(int row, int col) {
 		int check=0;
